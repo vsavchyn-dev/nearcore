@@ -1145,6 +1145,7 @@ mod tests {
 #[derive(BorshSerialize, BorshDeserialize, Clone, Debug, PartialEq, Eq, ProtocolSchema)]
 pub enum ReceiptSource {
     Local,
+    Instant,
 }
 
 /// Lightweight metadata about a processed receipt, stored instead of the full receipt.

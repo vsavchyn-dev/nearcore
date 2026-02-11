@@ -358,6 +358,7 @@ impl NightshadeRuntime {
             proof: apply_result.proof,
             processed_delayed_receipts: apply_result.processed_delayed_receipts,
             processed_local_receipts: apply_result.processed_local_receipts,
+            processed_instant_receipts: apply_result.processed_instant_receipts,
             processed_yield_timeouts: apply_result.processed_yield_timeouts,
             applied_receipts_hash: hash(&borsh::to_vec(receipts).unwrap()),
             congestion_info: apply_result.congestion_info,

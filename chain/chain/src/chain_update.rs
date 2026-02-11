@@ -18,6 +18,7 @@ use near_epoch_manager::EpochManagerAdapter;
 use near_epoch_manager::epoch_sync::update_epoch_sync_proof;
 use near_epoch_manager::shard_assignment::shard_id_to_uid;
 use near_primitives::apply::ApplyChunkReason;
+use near_primitives::receipt::ReceiptSource;
 use near_primitives::block::{Block, Tip};
 use near_primitives::block_header::BlockHeader;
 use near_primitives::epoch_block_info::BlockInfo;
@@ -153,7 +154,13 @@ impl<'a> ChainUpdate<'a> {
                     apply_result
                         .processed_local_receipts
                         .into_iter()
-                        .map(|r| (r, near_primitives::receipt::ReceiptSource::Local))
+                        .map(|r| (r, ReceiptSource::Local))
+                        .chain(
+                            apply_result
+                                .processed_instant_receipts
+                                .into_iter()
+                                .map(|r| (r, ReceiptSource::Instant)),
+                        )
                         .collect(),
                 );
                 // Save receipt and transaction results.

@@ -119,6 +119,7 @@ pub struct ApplyChunkResult {
     pub proof: Option<PartialStorage>,
     pub processed_delayed_receipts: Vec<Receipt>,
     pub processed_local_receipts: Vec<Receipt>,
+    pub processed_instant_receipts: Vec<Receipt>,
     pub processed_yield_timeouts: Vec<PromiseYieldTimeout>,
     /// Hash of Vec<Receipt> which were applied in a chunk, later used for
     /// chunk validation with state witness.
